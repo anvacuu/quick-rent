@@ -37,4 +37,9 @@ public class lib {
             System.out.println("Failed to close connection.");
         }
     }
+
+    public static void main(String[] args) throws ClassNotFoundException {
+        Connection con = null;
+        con= getConnection();
+    }
 }
