@@ -82,7 +82,7 @@ public class CustomerDao {
     }
     
     // check email đã tồn tại 
-    public Customer exitEmail(String email){
+    public Customer SelectCustomerByEmail(String email){
         Connection con = null;
         PreparedStatement pr = null;
         ResultSet re = null;
@@ -91,7 +91,7 @@ public class CustomerDao {
             con = lib.getConnection();
 
             // SQL query to fetch customer details based on username and password
-            String sql = "SELECT  email, password, phone_number, full_name, date_of_birth,image FROM Users where email=?";
+            String sql = "SELECT  email, phone_number, full_name, date_of_birth,image FROM Users where email=?";
             pr = con.prepareStatement(sql);
             pr.setString(1, email);
            
@@ -100,12 +100,11 @@ public class CustomerDao {
             if (re.next()) {
                 // Retrieve values by their index in the table (ensure these match the table schema)
                 String email1 = re.getString(1);
-                String password1 = re.getString(2);
-                String phone = re.getString(3);
-                String fullName = re.getString(4);
-                String date = re.getString(5);
-                String image = re.getString(6);
-                return new Customer(email1, password1,phone, fullName, date,image);
+                String phone = re.getString(2);
+                String fullName = re.getString(3);
+                String date = re.getString(4);
+                String image = re.getString(5);
+                return new Customer(email1,phone, fullName, date,image);
             }
         } catch (Exception e) {
             System.out.println("SQL error: " + e.getMessage());
@@ -113,4 +112,10 @@ public class CustomerDao {
         }
         return null; 
     }
+
+//    public static void main(String[] args) {
+//        CustomerDao dao = new CustomerDao();
+//        Customer cter = dao.exitEmail("son@gmail.com");
+//        System.out.println(cter);
+//    }
 }

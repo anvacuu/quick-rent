@@ -18,8 +18,13 @@ public class Customer {
         this.image = image;
     }
 
- 
-
+    public Customer(String email, String phone, String fullName, String birthDate, String image) {
+        this.email = email;
+        this.phone = phone;
+        this.fullName = fullName;
+        this.birthDate = birthDate;
+        this.image = image;
+    }
 
     public String getPhone() {
         return phone;
@@ -73,4 +78,15 @@ public class Customer {
         this.password = password;
     }
 
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", birthDate='" + birthDate + '\'' +
+                ", image='" + image + '\'' +
+                '}';
+    }
 }
